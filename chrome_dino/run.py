@@ -207,7 +207,7 @@ def run_dino(seconds=10):
         )
         model.save(save_path)
 
-    best_save_path = "smart_chrome_dino_20000_steps.zip"
+    best_save_path = "smart_chrome_dino_240000_steps.zip"
     model = PPO.load('checkpoints/'+best_save_path, env=env)
 
     images = []
