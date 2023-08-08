@@ -191,7 +191,7 @@ def run_dino(seconds=10):
     if do_train:
         checkpoint_callback = CheckpointCallback(
             save_freq=1000,
-            save_path='./.checkpoints/',
+            save_path='checkpoints/',
             name_prefix=save_path,
             save_replay_buffer=True,
             save_vecnormalize=True,
@@ -200,7 +200,7 @@ def run_dino(seconds=10):
             'CnnPolicy',
             env,
             verbose=0,
-            tensorboard_log="./.tb_chromedino_env/",
+            tensorboard_log="tb_chromedino_env/",
         )
         model.learn(
             total_timesteps=2000000, callback=[checkpoint_callback]
@@ -208,7 +208,7 @@ def run_dino(seconds=10):
         model.save(save_path)
 
     best_save_path = "smart_chrome_dino_20000_steps.zip"
-    model = PPO.load('./.checkpoints/'+best_save_path, env=env)
+    model = PPO.load('checkpoints/'+best_save_path, env=env)
 
     images = []
 
